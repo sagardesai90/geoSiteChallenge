@@ -59,7 +59,7 @@ ROOT_URLCONF = 'geositeBackend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'geositeBackend', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

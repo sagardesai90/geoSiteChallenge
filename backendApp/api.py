@@ -13,16 +13,6 @@ class RequestsMadeSerializer(serializers.HyperlinkedModelSerializer):
         requestMade = RequestsMade.objects.create(user=user, **validated_data)
         return requestMade 
 
-
-def get_processor_name():
-    if platform.system() == "Linux":
-        command = "cat /proc/cpuinfo"
-        all_info = subprocess.check_output(command, shell=True).strip()
-        infoArrStr = all_info.decode("utf-8")
-        print(infoArrStr, "infoArrStr")
-        return infoArrStr
-    return ""
-
 class RequestsMadeViewSet(viewsets.ModelViewSet):
     serializer_class = RequestsMadeSerializer
     queryset = RequestsMade.objects.none()
