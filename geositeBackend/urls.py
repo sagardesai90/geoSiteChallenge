@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
-from backendApp.api import RequestsMadeViewSet
-from backendApp import views
+from backendApp.api import PersonalRequestsViewSet
+# from backendApp import views
+
+from rest_framework.authtoken import views
 
 router = routers.DefaultRouter()
-router.register('requestsmade', RequestsMadeViewSet)
+router.register('requestsmade', PersonalRequestsViewSet)
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api-token-auth/', views.obtain_auth_token)
 ]
